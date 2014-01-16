@@ -1,0 +1,4 @@
+icon_default.png
+icon_enemy.png
+icon_friendly.png
+icon_enemy.png

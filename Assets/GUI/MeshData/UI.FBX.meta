@@ -1,0 +1,119 @@
+fileFormatVersion: 2
+guid: d3394ba8cc07e0948aa149c21e43ec23
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: button_weaponswitch
+    100002: Camera001
+    100004: Camera001.Target
+    100006: Icon_weapon_block
+    100008: Icon_weapon_pulse
+    100010: Object003
+    100012: Object004
+    100014: //RootNode
+    100016: UI_Left
+    100018: UI_Left 1
+    100020: UI_radar_center
+    100022: UI_radar
+    100024: UI_shadow
+    100026: UI_Right
+    400000: button_weaponswitch
+    400002: Camera001
+    400004: Camera001.Target
+    400006: Icon_weapon_block
+    400008: Icon_weapon_pulse
+    400010: Object003
+    400012: Object004
+    400014: //RootNode
+    400016: UI_Left
+    400018: UI_Left 1
+    400020: UI_radar_center
+    400022: UI_radar
+    400024: UI_shadow
+    400026: UI_Right
+    2300000: button_weaponswitch
+    2300002: Icon_weapon_block
+    2300004: Icon_weapon_pulse
+    2300006: Object003
+    2300008: Object004
+    2300010: UI_Left
+    2300012: UI_Left 1
+    2300014: UI_radar_center
+    2300016: UI_radar
+    2300018: UI_shadow
+    2300020: UI_Right
+    3300000: button_weaponswitch
+    3300002: Icon_weapon_block
+    3300004: Icon_weapon_pulse
+    3300006: Object003
+    3300008: Object004
+    3300010: UI_Left
+    3300012: UI_Left 1
+    3300014: UI_radar_center
+    3300016: UI_radar
+    3300018: UI_shadow
+    3300020: UI_Right
+    4300000: UI_Left
+    4300002: UI_Left
+    4300004: Icon_weapon_block
+    4300006: button_weaponswitch
+    4300008: Icon_weapon_pulse
+    4300010: Object003
+    4300012: Object004
+    4300014: UI_radar_center
+    4300016: UI_radar
+    4300018: UI_shadow
+    4300020: UI_Right
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
