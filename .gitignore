@@ -6,3 +6,12 @@
 *.csproj
 *.unityproj
 *.sln
+
+*desktop.ini
+*.pidb
+*.mdb
+*Thumbs.db*
+Demos/*/*
+!Demos/*/*.rar
+
+
