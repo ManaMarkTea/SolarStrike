@@ -5,7 +5,7 @@ public class Weapon : IWeapon {
 	
 	public GameObject Projectile;
 	public GameObject SecondaryProjectile;
-
+	
 	public float Speed;
 	public float AutoExploDistance = 15;
 	public IFLTexture CrossHairIFL;
@@ -16,7 +16,9 @@ public class Weapon : IWeapon {
 
 	private float currentCharge;
 
-
+	public RandomSound PrimarySound;
+	public RandomSound SecondarySound;
+	public RandomSound ChargedSound;
 
 	// Use this for initialization
 	public virtual void Start () {
@@ -143,15 +145,7 @@ public class Weapon : IWeapon {
 		if ( cameraView != null ) {
 			cam = cameraView.gameObject;
 		}
-		
-		var FireSound = GetComponent<AudioSource>();
-		if ( FireSound != null )
-		{
-			FireSound.pitch = UnityEngine.Random.value * 0.2f + 0.9f;
-			FireSound.Play();
-			
-			
-		}
+	
 		
 		GameObject clone =  Instantiate(projectile, spawn.transform.position, transform.rotation) as GameObject;
 		clone.SetActive(true);
@@ -194,6 +188,14 @@ public class Weapon : IWeapon {
 		if ( CurrentCoolDown > 0.0f ) { return null; }
 
 		var clone = LaunchProjectile(Player, Projectile);
+
+
+		if ( PrimarySound != null )
+		{
+			//FireSound.pitch = UnityEngine.Random.value * 0.2f + 0.9f;
+			PrimarySound.PlayRandom();
+		}
+
 		return clone;
 	}	
 
@@ -212,6 +214,13 @@ public class Weapon : IWeapon {
 		{
 			clone = LaunchProjectile(Player, SecondaryProjectile);
 			lastGranade = clone;
+
+			if ( SecondarySound != null )
+			{
+				//FireSound.pitch = UnityEngine.Random.value * 0.2f + 0.9f;
+				SecondarySound.PlayRandom();
+			}
+
 		}
 
 		return clone;
@@ -236,6 +245,13 @@ public class Weapon : IWeapon {
 			{
 				clone.GetComponent<Projectile>().Damage *= currentCharge;
 				CurrentCoolDown = CoolDown * currentCharge;
+
+				if ( ChargedSound != null )
+				{
+					//FireSound.pitch = UnityEngine.Random.value * 0.2f + 0.9f;
+					ChargedSound.PlayRandom();
+				}
+
 			}
 
 			currentCharge = 0.0f;

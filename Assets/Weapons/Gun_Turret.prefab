@@ -132,6 +132,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400016}
+  - 82: {fileID: 8200002}
+  - 114: {fileID: 11400004}
+  m_Layer: 0
+  m_Name: ChargedShotSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &100018
 GameObject:
   m_ObjectHideFlags: 1
@@ -236,12 +253,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 400016}
   - {fileID: 400012}
   - {fileID: 400010}
   m_Father: {fileID: 0}
+--- !u!4 &400016
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400014}
 --- !u!4 &400018
 Transform:
   m_ObjectHideFlags: 1
@@ -381,6 +410,64 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &8200002
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: d3b064c8aa230a74eb82aa6de89bd872, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 250
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .00200000009
+      value: 1
+      inSlope: 0
+      outSlope: -1.00200403
+      tangentMode: 0
+    - time: .997630358
+      value: .095238097
+      inSlope: -1.00200403
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9500000
 Animator:
   serializedVersion: 2
@@ -461,17 +548,41 @@ MonoBehaviour:
   ItemId: 
   CoolDown: .100000001
   CurrentCoolDown: 0
+  Armed: 1
   isPlayerWeapon: 0
   LockOnTarget: {fileID: 0}
   Projectile: {fileID: 100004, guid: 13893e34133986d45b7b1dbb80581018, type: 2}
   SecondaryProjectile: {fileID: 100000, guid: cab5fb3495502f74ca1c73b092727562, type: 2}
-  Armed: 1
   Speed: 300
   AutoExploDistance: 15
   CrossHairIFL: {fileID: 0}
   MaxCharge: 20
   ChargePerSecond: 3
   ChargeUI: {fileID: 0}
+  PrimarySound: {fileID: 11400004}
+  SecondarySound: {fileID: 0}
+  ChargedSound: {fileID: 0}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2d4d8138ac848a468aa1887ec96d753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleSounds:
+  - {fileID: 8300000, guid: d3b064c8aa230a74eb82aa6de89bd872, type: 3}
+  - {fileID: 8300000, guid: 29100771a4456ca489491c31f8fd73df, type: 3}
+  - {fileID: 8300000, guid: 7b593591e9740004a8f5f9f1ddbff665, type: 3}
+  - {fileID: 8300000, guid: c4f588a87506520419825ffb378624b9, type: 3}
+  - {fileID: 8300000, guid: 0d726e3582e3ade46b31f96c4fb15011, type: 3}
+  - {fileID: 8300000, guid: 08f8074780c8bf1478dcdcf70f477a2c, type: 3}
+  - {fileID: 8300000, guid: 232465ccda4682243b4d83a867d58780, type: 3}
+  - {fileID: 8300000, guid: eb5531aa78b9d7143837e7e0882d854c, type: 3}
+  - {fileID: 8300000, guid: 7cd67da616718d8419e36e4a96eadbcd, type: 3}
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1

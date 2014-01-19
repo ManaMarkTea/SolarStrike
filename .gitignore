@@ -11,8 +11,10 @@
 *.pidb
 *.mdb
 *Thumbs.db*
+*.userprefs
+
 Demos/*/*
 !Demos/*/*.rar
 
 
-*.userprefs
+
