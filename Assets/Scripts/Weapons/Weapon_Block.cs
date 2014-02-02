@@ -194,7 +194,7 @@ public class Weapon_Block : Weapon
 	//Place the block minecraft style:
 	public override GameObject Fire2 (GameObject Player)
 	{
-		if ( CurrentCoolDown > 0.0f ) {
+		if ( Input.GetButtonDown("Fire2") == false || CurrentCoolDown > 0.0f ) {
 			return null;
 		}
 
@@ -203,7 +203,7 @@ public class Weapon_Block : Weapon
 		                          {	
 			Quaternion rot = ComputeRotationForPlacement(World, spawner, hit.normal, curDir, futureIndex);
 			World.CreateBlockAt(createAt, spawner.SpawnType.ObjectID, rot.eulerAngles);
-			CurrentCoolDown = CoolDown;
+			CurrentCoolDown = CoolDown * 2;
 		});
 		
 		return null;

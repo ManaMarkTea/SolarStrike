@@ -6,13 +6,31 @@ ModelImporter:
     100000: //RootNode
     100002: PhalanxThrustBottom
     100004: PhalanxThrustTop
+    100006: Phalanx
+    100008: SpacePort
+    100010: TazionHarvester
     400000: //RootNode
     400002: PhalanxThrustBottom
     400004: PhalanxThrustTop
+    400006: Phalanx
+    400008: SpacePort
+    400010: TazionHarvester
     2300000: //RootNode
+    2300002: Phalanx
+    2300004: SpacePort
+    2300006: TazionHarvester
     3300000: //RootNode
+    3300002: Phalanx
+    3300004: SpacePort
+    3300006: TazionHarvester
     4300000: Phalanx
+    4300002: SpacePort
+    4300004: TazionHarvester
     6400000: //RootNode
+    6400002: Phalanx
+    6400004: SpacePort
+    6400006: TazionHarvester
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1

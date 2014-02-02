@@ -55,6 +55,7 @@ ModelImporter:
     100098: grid_light_fixture
     100100: grid_shelf
     100102: Plane001
+    100104: grid_weaponrack
     400000: grid
     400002: //RootNode
     400004: grid_half
@@ -107,6 +108,7 @@ ModelImporter:
     400098: grid_light_fixture
     400100: grid_shelf
     400102: Plane001
+    400104: grid_weaponrack
     2300000: grid
     2300002: grid_half
     2300004: ramp
@@ -157,6 +159,7 @@ ModelImporter:
     2300094: grid_light_fixture
     2300096: grid_shelf
     2300098: Plane001
+    2300100: grid_weaponrack
     3300000: grid
     3300002: grid_half
     3300004: ramp
@@ -207,6 +210,7 @@ ModelImporter:
     3300094: grid_light_fixture
     3300096: grid_shelf
     3300098: Plane001
+    3300100: grid_weaponrack
     4300000: grid
     4300002: ramp
     4300004: ramp_half
@@ -257,6 +261,7 @@ ModelImporter:
     4300094: grid_shelf
     4300096: grid_light_fixture
     4300098: grid_chair
+    4300100: grid_weaponrack
     6400000: grid
     6400002: grid_half
     6400004: ramp
@@ -307,6 +312,7 @@ ModelImporter:
     6400094: grid_light_fixture
     6400096: grid_shelf
     6400098: Plane001
+    6400100: grid_weaponrack
     9500000: //RootNode
   materials:
     importMaterials: 1
