@@ -457,6 +457,9 @@ MonoBehaviour:
   - Crate
   - Electric
   - Fixture
+  - Turret
+  - Chair
+  - Shield
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
