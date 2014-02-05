@@ -269,6 +269,9 @@ public class Weapon : IWeapon {
 	public Ray getRayCast()
 	{
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+		if ( player == null ) return new Ray();
+
 		var cam = player.transform.FindChild("Main Camera").gameObject.GetComponent<Camera>();		
 		var dir = cam.transform.TransformDirection(Vector3.forward);
 		return new Ray( cam.transform.position, dir );		
