@@ -3275,6 +3275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: Level2
+  defaultLevel: {fileID: 0}
 --- !u!1 &1665164886
 GameObject:
   m_ObjectHideFlags: 0
@@ -4866,7 +4867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Level: Level2
-  DefaultLevelData: DefaultLevel.dat
+  defaultLevel: {fileID: 4900000, guid: c8b7ad2ccf509e246a3fd27ff954737f, type: 3}
 --- !u!114 &1972662925
 MonoBehaviour:
   m_ObjectHideFlags: 0

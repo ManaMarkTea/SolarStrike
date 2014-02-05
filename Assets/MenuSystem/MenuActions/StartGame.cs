@@ -5,16 +5,13 @@ using System.IO;
 public class StartGame : MenuAction {
 
 	public string Level;
-	public string DefaultLevelData;
+
+	public TextAsset defaultLevel;
 
 	public override void SelectAction (MenuItem item)
 	{
-		var sr = new StreamReader(Application.dataPath + System.IO.Path.DirectorySeparatorChar +  DefaultLevelData);		
-		var fileContents = sr.ReadToEnd();
-		sr.Close();
-
 		StreamWriter sw = new StreamWriter("Level.dat");
-		sw.Write(fileContents);
+		sw.Write(defaultLevel.text);
 		sw.Close();
 
 		
