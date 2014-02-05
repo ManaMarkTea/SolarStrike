@@ -174,6 +174,10 @@ MonoBehaviour:
   SubType: 0
   HP: 100
   DPS: 0
+  ReGen: 1
+  ReGenDelay: 5
+  ReGenDelayRemaining: 5
+  ReGenHealthPerSecond: 5
   debris: {fileID: 100002, guid: 9b1f4dabc6fbb204f8291a28e5d6bfe1, type: 2}
   Pathable: 0
   MaxPathDistance: 5

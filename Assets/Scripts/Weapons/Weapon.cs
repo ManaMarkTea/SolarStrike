@@ -123,8 +123,8 @@ public class Weapon : IWeapon {
 		
 		if ( Physics.Raycast( cast, out hit, maxDist, everythingButPlayer )) return hit;
 
-
-		if ( Physics.CapsuleCast( cast.origin, cast.origin, 2.0f, cast.direction, out hit, maxDist, LayerMask.NameToLayer("Enemy")) )
+		int enemiesOnly = LayerMask.NameToLayer("Enemy");
+		if ( Physics.CapsuleCast( cast.origin, cast.origin, 5.0f, cast.direction, out hit, maxDist, enemiesOnly ) )
 		{
 			return hit;
 		}
@@ -153,7 +153,7 @@ public class Weapon : IWeapon {
 
 		RaycastHit? hit = AimDistance(2000);
 		
-		if ( isPlayerWeapon && hit != null )
+		if ( isPlayerWeapon && hit != null && hit.Value.collider.gameObject.tag == "Enemy" )
 		{
 			var proj = clone.GetComponent<Projectile>();
 			proj.TrackObject = hit.Value.collider.gameObject;
@@ -167,7 +167,7 @@ public class Weapon : IWeapon {
 			{
 				Collider cloneCollider = colliders[0];
 				Physics.IgnoreCollision(cloneCollider, launchFrom.collider);
-
+				Physics.IgnoreLayerCollision(clone.layer, clone.layer);
 				cloneCollider.gameObject.tag = "Projectile";
 			}
 		}

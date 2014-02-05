@@ -571,8 +571,9 @@ MonoBehaviour:
   txtOuputTag: 
   turnSpeed: 10
   Target: {fileID: 0}
-  AttackDist: 35
+  AttackDist: 70
   SwarmPower: 2
+  ClosinDist: 35
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,7 +593,7 @@ MonoBehaviour:
   LoopWayPoints: 0
   WayPoints: []
   Target: {fileID: 0}
-  AttackDist: 35
+  AttackDist: 70
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -657,6 +658,9 @@ MonoBehaviour:
   MaxCharge: 20
   ChargePerSecond: 3
   ChargeUI: {fileID: 0}
+  PrimarySound: {fileID: 0}
+  SecondarySound: {fileID: 0}
+  ChargedSound: {fileID: 0}
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -16,6 +16,7 @@
 
 Demos/*/*
 !Demos/*/*.rar
+!Demos/*/*.zip
 
 
 

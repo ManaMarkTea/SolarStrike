@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - 4: {fileID: 400004}
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PulseMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400008}
   - 108: {fileID: 10800000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Area Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
   - 64: {fileID: 6400000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: grid_barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400012}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 95: {fileID: 9500000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400000}
   - 82: {fileID: 8200000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - 4: {fileID: 400020}
   - 82: {fileID: 8200002}
   - 114: {fileID: 11400006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ChargedShotSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}

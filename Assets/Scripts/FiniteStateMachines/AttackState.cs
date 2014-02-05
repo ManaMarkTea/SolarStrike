@@ -11,8 +11,9 @@ public class AttackState : IState {
 	public MovementUtil movement;
 	public float turnSpeed = 10.0f;
 	public GameObject Target;
-	public float AttackDist = 15;
+	public float AttackDist = 35;
 	public float SwarmPower = 2;
+	public float ClosinDist = 15;
 
 	// Use this for initialization
 	public override void OnStart () {
@@ -70,9 +71,19 @@ public class AttackState : IState {
 
 			}
 
-			//Slow down, we are close enough, we'll circle the target a bit to confuze them!
-			movement.SlowDown(2.0f);
-			movement.ThrustersSide(toTarget.normalized, SwarmPower, true );
+			if ( toTarget.magnitude < ClosinDist)
+			{
+				//Slow down, we are close enough, we'll circle the target a bit to confuze them!
+				movement.SlowDown(2.0f);
+				movement.ThrustersSide(toTarget.normalized, SwarmPower, true );
+			}
+			else 
+			{
+				//We're close enough to fire, but we'll move on a slight angle so its harder to hit us!
+				movement.ThrustersDir(toTarget, 7.0f);
+				movement.ThrustersSide(toTarget.normalized, SwarmPower, true);
+			}
+
 		}
 		else 
 		{

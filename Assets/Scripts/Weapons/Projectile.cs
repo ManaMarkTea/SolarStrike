@@ -27,6 +27,12 @@ public abstract class Projectile : MonoBehaviour
 
 	public virtual void OnCollisionEnter(Collision collision)
 	{
+		if ( collision.gameObject.tag == "Projectile" )
+		{
+
+			return;
+		}
+
 		if ( ExplodeOnImpacts > 0 ) 
 		{
 			collisions++;
