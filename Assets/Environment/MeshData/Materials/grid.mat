@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: grid
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: f6512a89fefb250469b1dad1628b4e89, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -31,7 +31,7 @@ Material:
         first:
           name: _Cube
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 8900000, guid: 67dce3e3857c8bb42853f25db8a10959, type: 2}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -50,6 +50,14 @@ Material:
         first:
           name: _EmissionLM
         second: 0
+      data:
+        first:
+          name: _EnvStrength
+        second: 1.51785707
+      data:
+        first:
+          name: _ReflectStrength
+        second: .110714249
     m_Colors:
       data:
         first:
@@ -67,3 +75,11 @@ Material:
         first:
           name: _Emission
         second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
+          name: _SkyColor
+        second: {r: .400000006, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _BackColor
+        second: {r: .513999999, g: .384000003, b: .200000003, a: 1}

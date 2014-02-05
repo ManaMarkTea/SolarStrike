@@ -34,7 +34,7 @@
 
 		void surf (Input IN, inout SurfaceOutput OUT) 
 		{
-		  	OUT.Albedo = lerp( tex2D (_MainTex, IN.uv_MainTex).rgb, texCUBE(_Cube, IN.worldRefl).rgb,_ReflectStrength);
+		  	OUT.Albedo = lerp( tex2D (_MainTex, IN.uv_MainTex).rgb, texCUBE(_Cube, (IN.worldRefl * float3(-1.0,1.0,1.0)) ).rgb,_ReflectStrength);
 
 		}
 
