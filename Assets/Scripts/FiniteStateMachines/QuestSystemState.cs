@@ -10,6 +10,7 @@ using System.Collections;
 public class QuestSystemState : IState {
 
 	public bool AllQuestsComplete;
+	public IState FailState;
 
 	// Use this for initialization
 	public override void OnStart () {
@@ -50,6 +51,45 @@ public class QuestSystemState : IState {
 		return allDone;
 	}
 
+	public bool AreQuestsFailed(int [] indicesToCheck)
+	{
+		bool fail = false;
+		var quests = GetComponents<QuestState>();
+		
+		for ( int i = 0; i < indicesToCheck.Length; i++)
+		{
+			if ( i < quests.Length)
+			{
+				var quest = quests[i];
+				if ( quest.Failed == true )
+				{
+					fail = true;
+				}
+			}
+		}
+		
+		return fail;
+	}
+
+	public bool AreQuestsFailed()
+	{
+		bool fail = false;
+		var quests = GetComponents<QuestState>();
+		
+		for ( int i = 0; i < quests.Length; i++)
+		{
+			var quest = quests[i];
+			if ( quest.Failed == true )
+			{
+				fail = true;
+			}
+		}
+		
+		return fail;
+	}
+
+
+
 	public void SyncQuestText()
 	{
 		var quests = GetComponents<QuestState>();
@@ -59,9 +99,13 @@ public class QuestSystemState : IState {
 			if ( txtOutput != null)
 			{
 				string text = quest.QuestText;
-				if ( quest.Complete )
+				if ( quest.Complete && quest.Failed == false )
 				{
 					text = "<color=grey>" + text + " <i>(Complete)</i></color>";
+				}
+				else if ( quest.Complete && quest.Failed == true )
+				{
+					text = "<color=red>" + text + " <i>(FAILED)</i></color>";
 				}
 
 				if ( i == 0 )
@@ -84,11 +128,15 @@ public class QuestSystemState : IState {
 	// Update is called once per frame
 	public override void OnUpdate () {
 
+		bool failed = false;
 		bool allObjectivesDone = true;
 		var quests = GetComponents<QuestState>();
 		for ( int i = 0; i < quests.Length; i++)
 		{
 			var quest = quests[i];
+			if ( quest.Failed ) {
+				failed = true;
+			}
 			if ( quest.Complete == false )
 			{
 				allObjectivesDone = false;
@@ -98,7 +146,15 @@ public class QuestSystemState : IState {
 		//CHEAT: Skip to the next state without a power cell!  The ship won't charge!
 		if ( allObjectivesDone || Input.GetKeyDown(KeyCode.F1 ) )
 		{
-			this.NextState = this.FutureState;
+			if ( failed )
+			{
+				this.NextState = this.FailState;
+			} 
+			else 
+			{
+				this.NextState = this.FutureState;
+			}
+
 			this.AllQuestsComplete = true;
 		}
 		

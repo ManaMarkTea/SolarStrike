@@ -586,7 +586,7 @@ MonoBehaviour:
   txtPowerLevel: {fileID: 0}
   PowerLevel: 0
   PowerCell: {fileID: 0}
-  MinPowerLevel: 360
+  MinPowerLevel: 180
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

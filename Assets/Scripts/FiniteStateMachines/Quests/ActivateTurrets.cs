@@ -5,16 +5,15 @@ public class ActivateTurrets  : QuestState {
 
 	public int AmountOfTurretsNeeded = 2;
 	private int counted;
-	private string baseQuestText;
+
 
 	// Use this for initialization
-	void Start () {
+	public override void OnStart () {
 		this.counted = 0;
-		this.baseQuestText = QuestText;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnUpdate () {
 		
 		//TODO: Add an event for item pickup instead of scanning.
 		

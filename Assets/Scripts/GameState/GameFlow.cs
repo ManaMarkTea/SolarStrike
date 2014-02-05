@@ -6,6 +6,8 @@ using System.Collections;
 /// </summary>
 public class GameFlow : MonoBehaviour {
 
+	public QuestSystemState FailSystem;
+
 	public StateMachine stateMachine;
 	private GameObject states;
 
@@ -46,6 +48,11 @@ public class GameFlow : MonoBehaviour {
 				Screen.lockCursor = true;
 			}
 			
+		}
+
+		if ( FailSystem.AreQuestsFailed() && this.stateMachine.currentState != FailSystem.FailState )
+		{
+			this.stateMachine.SetState(FailSystem.FailState);
 		}
 
 		

@@ -4,12 +4,12 @@ using System.Collections;
 public class FindWeaponQuest : QuestState {
 
 	// Use this for initialization
-	void Start () {
+	public override void OnStart () {
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnUpdate () {
 
 		//TODO: Add an event for item pickup instead of scanning.
 

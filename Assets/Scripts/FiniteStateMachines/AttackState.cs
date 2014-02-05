@@ -41,14 +41,14 @@ public class AttackState : IState {
 		}
 		
 		Vector3 target = playerPos;
-		Vector3 toTarget = playerPos - StateGameObject.transform.position;
+
+		var ai = gameObject.GetComponent<EnemyAIStateMachine>();
+		Vector3 toTarget = playerPos - ai.weapon.transform.position;
 
 		//Close enough fire!
 		if ( toTarget.magnitude < AttackDist ) 
 		{
 			//FIRE!!!!
-
-			var ai = gameObject.GetComponent<EnemyAIStateMachine>();
 			var projObj = ai.weapon.Fire(ai.gameObject);
 
 			//Bad guys have red trails!

@@ -6,12 +6,12 @@ public class FindBlockType : QuestState {
 	public string BlockToFind = "PowerCell";
 
 	// Use this for initialization
-	void Start () {
+	public override void OnStart () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public override void OnUpdate () {
 		
 		var player = GameObject.FindGameObjectWithTag("Player");
 		

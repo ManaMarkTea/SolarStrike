@@ -8,6 +8,7 @@ public class PhalanxShip : MonoBehaviour {
 
 	public IWeapon PrimaryTurret;
 	public GameObject PrimaryTurretPivot;
+	public GameObject Explosion;
 
 	public GUIText txtPowerLevel;
 
@@ -15,11 +16,20 @@ public class PhalanxShip : MonoBehaviour {
 	public BlockObject PowerCell;
 	public float MinPowerLevel = 100;
 
+	public float HP = 10000.0f;
+
+
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
+
+	public void TakeDamage(float distance)
+	{		
+
+		HP -= distance;	
+	}
+
 	// Update is called once per frame
 	void Update () {
 
@@ -36,10 +46,30 @@ public class PhalanxShip : MonoBehaviour {
 			this.PowerLevel += Time.deltaTime;
 		}
 
+		if ( HP == 0)
+		{
+			var pos = this.transform.position;
+			Instantiate(Explosion, pos, Quaternion.identity);
+			pos.y += 10;
+			Instantiate(Explosion, pos, Quaternion.identity);
+			pos.y -= 10;
+			pos.x += 10;
+			Instantiate(Explosion, pos, Quaternion.identity);
+			pos.x -= 10;
+			pos.z += 10;
+			Instantiate(Explosion, pos, Quaternion.identity);
+			Destroy(this.gameObject);
+
+		}
+
 		//CHEATER!!!!!!!!!!!
 		if ( Input.GetKeyDown( KeyCode.F2) )
 		{
 			this.PowerLevel += 10;
+		}
+		if ( Input.GetKeyDown( KeyCode.F3) )
+		{
+			this.HP -= 1000;
 		}
 
 		//Update any text that we may have associated:
@@ -52,6 +82,7 @@ public class PhalanxShip : MonoBehaviour {
 			}
 
 			txtPowerLevel.text = "Ship power: " + percent.ToString("0.0") + "%";
+			txtPowerLevel.text += "\nHull power: " + HP.ToString("0.0");
 		}
 
 		//If we have enough power we will shoot:

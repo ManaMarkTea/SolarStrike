@@ -58,6 +58,7 @@ public class ForceField : Projectile {
 											
 				Vector3 dist = col.gameObject.transform.position - this.transform.position;
 				float mag = 1.0f - (dist.magnitude / Radius);
+				if ( mag < 0 ) mag = 1.0f;
 				float damage = mag * Damage;
 				
 				col.gameObject.SendMessageUpwards("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);

@@ -12,6 +12,12 @@ public class WaitForQuestSetComplete : IState {
 		{
 			txtOutput.text = "";
 		}
+
+		if ( QuestsToWaitFor != null)
+		{
+			QuestsToWaitFor.gameObject.SetActive(true);
+		}
+
 	}
 
 	// Update is called once per frame
@@ -21,7 +27,14 @@ public class WaitForQuestSetComplete : IState {
 
 		if ( QuestsToWaitFor == null || QuestsToWaitFor.AreQuestsComplete(QuestsNeeded) || Input.GetKeyDown(KeyCode.F1 ) )
 		{
-			this.NextState = this.FutureState;
+			if ( QuestsToWaitFor.AreQuestsFailed(QuestsNeeded) )
+			{
+				this.NextState = QuestsToWaitFor.FailState;
+			}
+			else 
+			{
+				this.NextState = this.FutureState;
+			}
 		}
 	}
 }

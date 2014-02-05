@@ -613,7 +613,7 @@ MonoBehaviour:
   txtHPTag: BossUI
   txtHP: {fileID: 0}
   WayPoints: []
-  HP: 5000
+  HP: 10000
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -661,6 +661,9 @@ MonoBehaviour:
   MaxCharge: 20
   ChargePerSecond: 3
   ChargeUI: {fileID: 0}
+  PrimarySound: {fileID: 0}
+  SecondarySound: {fileID: 0}
+  ChargedSound: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

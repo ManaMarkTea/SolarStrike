@@ -31,6 +31,9 @@ public class GenerateWorld : MonoBehaviour {
 	void Start () {
 		World = this;
 
+		Screen.lockCursor = true;
+		Screen.showCursor = false;
+
 		//Store prefabs of all blocks we know about into a map by name:
 		foreach ( var prefab in AvailbleBlocks )
 		{
@@ -45,12 +48,6 @@ public class GenerateWorld : MonoBehaviour {
 		//HACKY, removes the window border using PInvoke.
 		{
 			Util.GoFullscreenBorderless();
-		}
-
-		//In game lock the mouse right off the bat:
-		if (Application.isEditor == false ) {
-			Screen.showCursor = true;
-			Screen.lockCursor = false;
 		}
 			
 		WorldCubeData = new VoxelCube();

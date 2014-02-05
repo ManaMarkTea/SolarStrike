@@ -2426,10 +2426,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrimaryTurret: {fileID: 1891888637}
   PrimaryTurretPivot: {fileID: 1404953182}
+  Explosion: {fileID: 0}
   txtPowerLevel: {fileID: 0}
   PowerLevel: 0
   PowerCell: {fileID: 0}
-  MinPowerLevel: 360
+  MinPowerLevel: 180
+  HP: 10000
 --- !u!82 &407314493
 AudioSource:
   m_ObjectHideFlags: 0

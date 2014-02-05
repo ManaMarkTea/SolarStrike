@@ -8,6 +8,10 @@ public class MainMenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		Screen.lockCursor = false;
+		Screen.showCursor = true;
+
 		this.MenuItems = GetComponentsInChildren<MenuItem>();
 		for ( int i = 0; i < this.MenuItems.Length; i++ )
 		{

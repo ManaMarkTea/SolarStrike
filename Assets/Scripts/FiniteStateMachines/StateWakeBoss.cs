@@ -18,6 +18,6 @@ public class StateWakeBoss : IState {
 	
 	// Update is called once per frame
 	public override void OnUpdate () {
-
+		this.NextState = this.FutureState;
 	}
 }
