@@ -71,3 +71,37 @@ public class StateMachine
 }
 
 
+
+
+public class StateMachine
+{
+	public IState currentState;
+
+	public void SetState( IState newState )
+	{
+		//Sets the new state:
+		this.currentState.enabled = false;
+		this.currentState = newState;
+		this.currentState.OnStart();
+		this.currentState.enabled = true;
+	}
+	
+	public void Update()
+	{
+		//Check to see if we need to change the state.
+		IState gotoState = currentState.NextState;
+		
+		if ( currentState != gotoState && gotoState != null )
+		{
+			//Goto next state:
+			SetState(gotoState);
+		}
+	}
+}
+
+
+
+
+
+
+
