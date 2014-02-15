@@ -44,20 +44,20 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Shininess
-        second: .699999988
-      data:
-        first:
-          name: _EmissionLM
-        second: 0
-      data:
-        first:
           name: _EnvStrength
         second: 1.51785707
       data:
         first:
           name: _ReflectStrength
         second: .110714249
+      data:
+        first:
+          name: _Shininess
+        second: .699999988
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
     m_Colors:
       data:
         first:
@@ -69,17 +69,17 @@ Material:
         second: {r: 1, g: 1, b: 1, a: .5}
       data:
         first:
-          name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
-      data:
-        first:
           name: _SkyColor
         second: {r: .400000006, g: 1, b: 1, a: 1}
       data:
         first:
           name: _BackColor
         second: {r: .513999999, g: .384000003, b: .200000003, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}
