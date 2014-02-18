@@ -10,6 +10,7 @@ public class EnemyAIStateMachine : MonoBehaviour {
 
 	public Material TrailOverrideMaterial;
 	public Material ProjectileOverrideMaterial;
+	public Color ProjectileLightOverride;
 
 	public bool Disabled;
 	public IWeapon weapon;

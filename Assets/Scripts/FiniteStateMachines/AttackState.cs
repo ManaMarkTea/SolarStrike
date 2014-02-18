@@ -69,6 +69,14 @@ public class AttackState : IState {
 					projObj.gameObject.renderer.material = ai.ProjectileOverrideMaterial;
 				}
 
+				var light = projObj.gameObject.GetComponentInChildren<Light>();
+
+				if ( ai.ProjectileLightOverride != null && light != null )
+				{
+					light.color = ai.ProjectileLightOverride;
+				}
+
+
 			}
 
 			if ( toTarget.magnitude < ClosinDist)
