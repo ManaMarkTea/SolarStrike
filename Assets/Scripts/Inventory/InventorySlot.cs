@@ -54,8 +54,12 @@ public class InventorySlot : MonoBehaviour {
 
 	public event Action<InventorySlot> OnSelected;
 
+	private TextMesh text;
+
 	// Use this for initialization
 	void Start () {
+		this.text = this.GetComponentInChildren<TextMesh>();
+		this.text.text = "";
 	}
 
 	public void NotifySelected() 
@@ -107,6 +111,13 @@ public class InventorySlot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+		if ( this.ShortCutKey != KeyCode.None )
+		{
+			this.text.text = this.ShortCutKey.ToString().Replace("Alpha", "");
+
+		}
+
 
 		//Get the position of the mouse in screen space:
 		RaycastHit hit ;
@@ -200,7 +211,7 @@ public class InventorySlot : MonoBehaviour {
 			}
 
 			//We were the ones being dragged and now thats been handled, so reset our position and conditions.
-			if ( dragging ) 
+			if ( dragging && this.Item != null ) 
 			{
 				this.Item.Icon.transform.localPosition = Vector3.zero;
 			}

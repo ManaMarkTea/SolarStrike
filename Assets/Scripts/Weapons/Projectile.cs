@@ -24,7 +24,7 @@ public abstract class Projectile : MonoBehaviour
 	{
 
 	}
-
+						
 	public virtual void OnCollisionEnter(Collision collision)
 	{
 		if ( collision.gameObject.tag == "Projectile" )
@@ -91,7 +91,7 @@ public abstract class Projectile : MonoBehaviour
 				var newDir = TrackObject.transform.position - this.transform.position;
 				newDir.Normalize();
 
-				vel = Vector3.Lerp( vel, newDir, 0.1f);
+				vel = Vector3.Lerp( vel, newDir, 0.2f);
 			}
 
 			vel *= speed;

@@ -20,6 +20,8 @@ public class Weapon : IWeapon {
 	public RandomSound SecondarySound;
 	public RandomSound ChargedSound;
 
+	private Vector3 initPos;
+
 	// Use this for initialization
 	public virtual void Start () {
 
@@ -27,12 +29,18 @@ public class Weapon : IWeapon {
 
 		var multiples = GameObject.FindGameObjectsWithTag("ChargeUI");
 
+		this.initPos = transform.localPosition;
 
 	}
 
 
 	// Update is called once per frame
 	public virtual void Update () {
+
+		Vector3 pos = this.transform.position * 0.5f;
+		float bob = Mathf.Cos(pos.x + pos.z ) + Mathf.Sin(pos.y );
+
+		this.transform.localPosition = initPos + (new Vector3( 0, bob, 0) * 0.0008f);
 
 		if ( ChargeUI != null && MaxCharge != 0 )
 		{
@@ -121,10 +129,13 @@ public class Weapon : IWeapon {
 		int everythingButPlayer = 1 << LayerMask.NameToLayer("Player") |  1 << LayerMask.NameToLayer("Projectile");
 		everythingButPlayer = ~everythingButPlayer;
 		
-		if ( Physics.Raycast( cast, out hit, maxDist, everythingButPlayer )) return hit;
+		if ( Physics.Raycast( cast, out hit, maxDist, everythingButPlayer )) 
+		{ 
+			return hit; 
+		}
 
-		int enemiesOnly = LayerMask.NameToLayer("Enemy");
-		if ( Physics.CapsuleCast( cast.origin, cast.origin, 5.0f, cast.direction, out hit, maxDist, enemiesOnly ) )
+		int enemiesOnly = 1 << LayerMask.NameToLayer("Enemy");
+		if ( Physics.SphereCast( cast, 5.0f, out hit, maxDist, enemiesOnly ) )
 		{
 			return hit;
 		}

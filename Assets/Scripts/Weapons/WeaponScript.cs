@@ -151,6 +151,14 @@ public class WeaponScript : MonoBehaviour {
 		}
 
 
+		var slot = dest.GetOpenSlot();
+		
+		if ( slot == null ) 
+		{
+			return;
+		}
+
+
 		BlockObject block = weapon.gameObject.GetBlockInChildren();
 		if ( block != null )
 		{
@@ -161,8 +169,7 @@ public class WeaponScript : MonoBehaviour {
 
 			//Objects need to be active in order to attach to them!
 			bool state = dest.SetTempActive();
-			var slot = dest.GetOpenSlot();
-
+		
 			itemObject.transform.parent = slot.transform;
 			itemObject.transform.localPosition = Vector3.zero;
 			itemObject.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
@@ -182,7 +189,7 @@ public class WeaponScript : MonoBehaviour {
 				item.ItemId = weapon.ItemId;
 
 				bool state = dest.SetTempActive();
-				var slot = dest.GetOpenSlot();
+
 				itemObject.transform.parent = slot.transform;
 				itemObject.transform.localPosition = Vector3.zero;
 				itemObject.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);

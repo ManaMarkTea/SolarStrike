@@ -228,7 +228,7 @@ MonoBehaviour:
   ExplodeOnImpacts: 1
   TrackObject: {fileID: 0}
   Tracking: 0
-  Power: 30
+  Power: 3
   Explosion: {fileID: 100006, guid: 3b6eca33d3a0f5641a52cbfc02d6269d, type: 2}
 --- !u!135 &13500000
 SphereCollider:

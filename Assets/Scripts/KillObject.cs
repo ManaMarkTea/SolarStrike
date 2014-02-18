@@ -34,10 +34,13 @@ public class KillObject : MonoBehaviour {
 				{
 					for( int m = 0; m < renderers[i].materials.Length; m++ )
 					{
-						Color color = renderers[i].materials[m].color;
-						color.a = alpha;
-						renderers[i].material.shader = FadeShader;
-						renderers[i].materials[m].color = color;
+						if ( renderers[i].materials[m].HasProperty("color") )
+						{
+							Color color = renderers[i].materials[m].color;
+							color.a = alpha;
+							renderers[i].material.shader = FadeShader;
+							renderers[i].materials[m].color = color;
+						}
 					}
 				}
 			}

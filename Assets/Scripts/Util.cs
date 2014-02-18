@@ -156,6 +156,47 @@ public static class Util
 		
 		return output;
 	}
+
+
+
+	static bool lastTouch;
+	public static bool IsMouseUp(int button)
+	{
+		bool touchOn = Input.touchCount != 0;
+		if (lastTouch == true && touchOn == false) 
+		{
+			lastTouch = touchOn;
+			return true;
+		}
+		return Input.GetMouseButtonUp (button);
+	}
+	
+	public static bool IsMouseDown(int button)
+	{
+		bool touchOn = Input.touchCount != 0;
+		if (lastTouch == false && touchOn) {
+			return true;
+		}
+		return Input.GetMouseButtonDown (button);
+	}
+	
+	public static bool IsMouse(int button)
+	{
+		bool touchOn = Input.touchCount != 0;
+		return Input.GetMouseButton (button) || touchOn;
+	}
+	
+	public static Vector3 getMousePosition () {
+		bool touchOn = Input.touchCount != 0;
+		if (touchOn)
+		{
+			return new Vector3( Input.touches[0].rawPosition.x, Input.touches[0].rawPosition.y, 0);
+		}
+		return Input.mousePosition;
+	}
+
+
+
 	
 #if UNITY_STANDALONE_WIN
 	

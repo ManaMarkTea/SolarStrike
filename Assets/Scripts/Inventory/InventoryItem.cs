@@ -33,6 +33,12 @@ public class InventoryItem : MonoBehaviour {
 				weap.Armed = false;
 			}
 
+			var emitter = _icon.GetComponentInChildren<ParticleSystem>();
+			if ( emitter != null )
+			{
+				emitter.emissionRate = 0;
+			}
+
 		}
 	}
 
@@ -61,8 +67,10 @@ public class InventoryItem : MonoBehaviour {
 				_icon = Instantiate(value, this.transform.position, Quaternion.identity) as GameObject;
 				_icon.gameObject.transform.parent = this.transform;
 				_icon.SetActive(true);
+
 				Util.SetLayer(_icon.transform, LayerMask.NameToLayer("GUI"));
 				Util.DestroyAllColliders(_icon);
+
 			}
 			
 			this.Update();

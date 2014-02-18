@@ -66,7 +66,7 @@ public class ForceBeam : Projectile {
 				//If its a player, move it!
 				if ( motor != null ) 
 				{
-					motor.SetVelocity( dist.normalized * Power);
+					motor.SetVelocity( motor.movement.velocity + (dist.normalized * Power));
 				}
 
 				col.gameObject.SendMessageUpwards("TakeDamage", this.Damage, SendMessageOptions.DontRequireReceiver);
