@@ -1,12 +1,9 @@
-﻿Shader "Custom/Diffuse_Hempisphere"{
+Shader "Custom/Diffuse_Hempisphere"{
     Properties {
 		_SkyColor("SkyColor",Color) = (.4,1.0,1.0,1.0)
 		_BackColor("BackColor",Color) = (.514,.384,.2,1.0)
 		
 		_EnvStrength ("Hemisphere Strength", Range(0.0,5.0)) = 1.0
-		_ReflectStrength ("Reflect Strength", Range(0.0,5.0)) = .2
-		
-		_Cube ("Cubemap", CUBE) = "" {}
       	_MainTex ("Texture", 2D) = "white" {}
     }
     SubShader {
@@ -16,14 +13,14 @@
       #pragma surface surf WrapLambert
 
 		uniform sampler2D _MainTex;
-		uniform samplerCUBE _Cube;
+
 				
 		uniform float4 _SkyColor;
 		uniform float4 _BackColor;
 		
 		uniform float _HorizLine;
 		uniform float _EnvStrength;
-		uniform float _ReflectStrength;
+
 
 
 		struct Input 
@@ -34,7 +31,7 @@
 
 		void surf (Input IN, inout SurfaceOutput OUT) 
 		{
-		  	OUT.Albedo = lerp( tex2D (_MainTex, IN.uv_MainTex).rgb, texCUBE(_Cube, (IN.worldRefl * float3(-1.0,1.0,1.0)) ).rgb,_ReflectStrength);
+		  	OUT.Albedo = tex2D (_MainTex, IN.uv_MainTex).rgb;
 
 		}
 

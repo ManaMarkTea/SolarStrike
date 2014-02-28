@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: grid
-  m_Shader: {fileID: 4800000, guid: f6512a89fefb250469b1dad1628b4e89, type: 3}
+  m_Shader: {fileID: 4800000, guid: 32c3e9806bca383438cb93ef2a5561f5, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -44,16 +44,16 @@ Material:
     m_Floats:
       data:
         first:
-          name: _Shininess
-        second: .699999988
-      data:
-        first:
           name: _EnvStrength
         second: 2.23214293
       data:
         first:
           name: _ReflectStrength
         second: .625
+      data:
+        first:
+          name: _Shininess
+        second: .699999988
       data:
         first:
           name: _EmissionLM
@@ -65,12 +65,8 @@ Material:
         second: {r: .376470596, g: .376470596, b: .376470596, a: 1}
       data:
         first:
-          name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: .5}
       data:
         first:
           name: _SkyColor
@@ -81,5 +77,9 @@ Material:
         second: {r: .573529422, g: .372745782, b: .0885597095, a: 1}
       data:
         first:
-          name: _ReflectColor
-        second: {r: 1, g: 1, b: 1, a: .5}
+          name: _SpecColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}
