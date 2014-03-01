@@ -10,7 +10,7 @@ public class StartGame : MenuAction {
 
 	public override void SelectAction (MenuItem item)
 	{
-		StreamWriter sw = new StreamWriter("Level.dat");
+		StreamWriter sw = new StreamWriter("Level.txt");
 		sw.Write(defaultLevel.text);
 		sw.Close();
 

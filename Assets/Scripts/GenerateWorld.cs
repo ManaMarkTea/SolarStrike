@@ -21,6 +21,7 @@ public class GenerateWorld : MonoBehaviour {
 	public static VoxelCube WorldCubeData;
 
 	public bool EditorMode;
+	public static string LevelToLoad = "Level.txt";
 
 	public GenerateWorld()
 	{
@@ -200,7 +201,7 @@ public class GenerateWorld : MonoBehaviour {
 			clone.transform.parent = this.transform;
 			WorldCubeData[index] = clone;
 			clone.GetBlock().ConfigureSubType();
-			SaveLevel("Level.dat");
+			SaveLevel("Level.txt");
 			return true;
 		}
 		
@@ -212,7 +213,7 @@ public class GenerateWorld : MonoBehaviour {
 		Vector3 cellPos = new Vector3(pos.x * 0.5f, pos.y * 0.5f, pos.z * 0.5f);
 		BlockIndex index = WorldCubeData.GetCellIndex( ref cellPos );
 		WorldCubeData[index] = null;
-		SaveLevel("Level.dat");
+		SaveLevel("Level.txt");
 	}
 	/// <summary>
 	/// Update this instance.
@@ -242,12 +243,31 @@ public class GenerateWorld : MonoBehaviour {
 						AppendLine();
 			}
 		}
-		
-		File.WriteAllText(fileName, builder.ToString());		
+
+		if ( fileName == null )
+		{
+#if UNITY_EDITOR
+			var curLock = Screen.lockCursor;
+			var curShow = Screen.showCursor;
+			Screen.lockCursor = false;
+			Screen.showCursor = true;
+			fileName = UnityEditor.EditorUtility.SaveFilePanel("Save this level to .txt", Application.dataPath, "DefaultLevel.txt", "txt");
+			Screen.lockCursor = curLock;
+			Screen.showCursor = curShow;
+#endif
+		}
+
+		if ( string.IsNullOrEmpty(fileName) == false )
+		{
+
+			File.WriteAllText(fileName, builder.ToString());
+		}
 	}
 	
 	public void LoadLevel() 
 	{
+		var levelName = LevelToLoad;
+
 		if ( EditorMode) 
 		{
 			Stack<GameObject> stack = new Stack<GameObject>();
@@ -271,13 +291,18 @@ public class GenerateWorld : MonoBehaviour {
 			}
 
 			var assetPath = Application.dataPath;
-			SaveLevel(assetPath + System.IO.Path.DirectorySeparatorChar + "DefaultLevel.txt");
+			var fileName = assetPath + System.IO.Path.DirectorySeparatorChar + "DefaultLevel.txt";
+			#if UNITY_EDITOR
+			fileName = null;
+			#endif
+
+			SaveLevel(fileName);
 			Application.LoadLevel("MainMenu");
 
 		}
-		else if ( File.Exists("Level.dat") )
+		else if ( File.Exists(levelName) )
 		{
-			string[] data = File.ReadAllLines("Level.dat");
+			string[] data = File.ReadAllLines(levelName);
 			foreach( string line in data)
 			{
 				string[] parts = line.Split(' ');

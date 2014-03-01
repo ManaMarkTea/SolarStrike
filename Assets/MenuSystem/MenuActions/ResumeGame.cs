@@ -9,9 +9,9 @@ public class ResumeGame  : MenuAction {
 
 	public override void SelectAction (MenuItem item)
 	{
-		if ( System.IO.File.Exists("Level.dat") == false )
+		if ( System.IO.File.Exists("Level.txt") == false )
 		{
-			StreamWriter sw = new StreamWriter("Level.dat");
+			StreamWriter sw = new StreamWriter("Level.txt");
 			sw.Write(defaultLevel.text);
 			sw.Close();
 		}
