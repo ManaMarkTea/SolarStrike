@@ -90,19 +90,24 @@ public class WeaponScript : MonoBehaviour {
 			}
 		}
 
-		Inventory equipBar = GameObject.FindGameObjectWithTag("Equipment").GetComponent<Inventory>();
-		Inventory inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+		var equip = GameObject.FindGameObjectWithTag("Equipment");
 
-		int slots = equipBar.slots[0].Slots.Count;
-
-		for ( int i = 0; i < InstancedWeapons.Count; i++) 
+		if ( equip != null )
 		{
-			Inventory dest = equipBar;
-			if ( i >= slots ){
-				dest = inv;
+			Inventory equipBar = equip.GetComponent<Inventory>();
+			Inventory inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+
+			int slots = equipBar.slots[0].Slots.Count;
+
+			for ( int i = 0; i < InstancedWeapons.Count; i++) 
+			{
+				Inventory dest = equipBar;
+				if ( i >= slots ){
+					dest = inv;
+				}
+
+
 			}
-
-
 		}
 		
 		//activeWeapon = InstancedWeapons[activeIndex].GetComponent<IWeapon>();		

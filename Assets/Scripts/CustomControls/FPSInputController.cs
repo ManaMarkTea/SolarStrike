@@ -23,10 +23,14 @@ public class FPSInputController : MonoBehaviour
         Vector3 directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 		var inventory = GameObject.FindGameObjectWithTag("Inventory");
-		var inv = inventory.GetComponent<Inventory>();
-		if (  inv.visible ) 
+
+		if ( inventory != null )
 		{
-			directionVector = Vector3.zero;
+			var inv = inventory.GetComponent<Inventory>();
+			if (  inv.visible ) 
+			{
+				directionVector = Vector3.zero;
+			}
 		}
 
         if (directionVector != Vector3.zero)

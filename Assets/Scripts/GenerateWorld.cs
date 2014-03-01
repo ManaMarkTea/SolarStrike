@@ -19,7 +19,9 @@ public class GenerateWorld : MonoBehaviour {
 	public GameObject[] AvailbleBlocks;
 	
 	public static VoxelCube WorldCubeData;
-	
+
+	public bool EditorMode;
+
 	public GenerateWorld()
 	{
 
@@ -198,7 +200,7 @@ public class GenerateWorld : MonoBehaviour {
 			clone.transform.parent = this.transform;
 			WorldCubeData[index] = clone;
 			clone.GetBlock().ConfigureSubType();
-			SaveLevel();
+			SaveLevel("Level.dat");
 			return true;
 		}
 		
@@ -210,7 +212,7 @@ public class GenerateWorld : MonoBehaviour {
 		Vector3 cellPos = new Vector3(pos.x * 0.5f, pos.y * 0.5f, pos.z * 0.5f);
 		BlockIndex index = WorldCubeData.GetCellIndex( ref cellPos );
 		WorldCubeData[index] = null;
-		SaveLevel();
+		SaveLevel("Level.dat");
 	}
 	/// <summary>
 	/// Update this instance.
@@ -222,7 +224,7 @@ public class GenerateWorld : MonoBehaviour {
 
 	//IO: Probably not the right way to do this...
 	
-	public void SaveLevel()
+	public void SaveLevel(string fileName)
 	{
 		StringBuilder builder = new StringBuilder();
 		foreach( BlockIndex index in WorldCubeData.Cells.Keys)
@@ -241,12 +243,39 @@ public class GenerateWorld : MonoBehaviour {
 			}
 		}
 		
-		File.WriteAllText("Level.dat", builder.ToString());		
+		File.WriteAllText(fileName, builder.ToString());		
 	}
 	
 	public void LoadLevel() 
 	{
-		if ( File.Exists("Level.dat") )
+		if ( EditorMode) 
+		{
+			Stack<GameObject> stack = new Stack<GameObject>();
+			stack.Push(this.gameObject);
+
+			while (stack.Count > 0 ) 
+			{
+				var top = stack.Pop();
+				var block = top.GetComponent<BlockObject>();
+				if ( block != null )
+				{
+					var blockPos = top.transform.position;
+					BlockIndex index = getIndexOfPoint(ref blockPos);
+					WorldCubeData[index] = block.gameObject;
+				}
+
+				for ( int i = 0; i < top.transform.childCount; i++ )
+				{
+					stack.Push(top.transform.GetChild(i).gameObject);
+				}
+			}
+
+			var assetPath = Application.dataPath;
+			SaveLevel(assetPath + System.IO.Path.DirectorySeparatorChar + "DefaultLevel.txt");
+			Application.LoadLevel("MainMenu");
+
+		}
+		else if ( File.Exists("Level.dat") )
 		{
 			string[] data = File.ReadAllLines("Level.dat");
 			foreach( string line in data)

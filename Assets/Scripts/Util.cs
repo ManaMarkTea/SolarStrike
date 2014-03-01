@@ -10,8 +10,12 @@ public static class Util
 {
 	public static bool IsUiActive() { 
 		var inventory = GameObject.FindGameObjectWithTag("Inventory");
-		var inv = inventory.GetComponent<Inventory>();
-		return inv.visible;
+		if ( inventory != null )
+		{
+			var inv = inventory.GetComponent<Inventory>();
+			return inv.visible;
+		}
+		return false;
 	}
 
 	public static List<Renderer> FindRenderers( GameObject obj)
