@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 01 - Default
-  m_Shader: {fileID: 10, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: ef19d04c56096c544ab4b2331d3bec73, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -86,12 +86,24 @@ Material:
     m_Floats:
       data:
         first:
+          name: _EnvStrength
+        second: 1.26785719
+      data:
+        first:
           name: _EmissionLM
         second: 0
       data:
         first:
           name: _Outline
         second: .00499999989
+      data:
+        first:
+          name: _Roughness
+        second: .892857254
+      data:
+        first:
+          name: _HorizLine
+        second: 0
     m_Colors:
       data:
         first:
@@ -101,3 +113,11 @@ Material:
         first:
           name: _OutlineColor
         second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: 1, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _SelfIllum
+        second: {r: 0, g: .296551704, b: 1, a: 1}

@@ -10501,6 +10501,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 043f432f78cdaa24c956061ff766cea9, type: 2}
   - {fileID: 100004, guid: dbbfe74f4c90b0344b09c4be50965bb0, type: 2}
   - {fileID: 100000, guid: f8dfffdfd7e1c9346a8af9d611e35375, type: 2}
+  EditorMode: 0
 --- !u!82 &2125165405
 AudioSource:
   m_ObjectHideFlags: 0
