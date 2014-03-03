@@ -259,14 +259,24 @@ public class GenerateWorld : MonoBehaviour {
 
 		if ( string.IsNullOrEmpty(fileName) == false )
 		{
-
-			File.WriteAllText(fileName, builder.ToString());
+			#if UNITY_WEBPLAYER
+				PlayerPrefs.SetString("LevelData", builder.ToString());
+			#else
+				File.WriteAllText(fileName, builder.ToString());
+			#endif
 		}
 	}
 	
 	public void LoadLevel() 
 	{
 		var levelName = LevelToLoad;
+
+		#if UNITY_WEBPLAYER
+		bool levelOkay = PlayerPrefs.HasKey("LevelData");
+		#else
+		bool levelOkay = File.Exists(levelName);
+		#endif	
+
 
 		if ( EditorMode) 
 		{
@@ -300,9 +310,14 @@ public class GenerateWorld : MonoBehaviour {
 			Application.LoadLevel("MainMenu");
 
 		}
-		else if ( File.Exists(levelName) )
+		else if ( levelOkay )
 		{
-			string[] data = File.ReadAllLines(levelName);
+			#if UNITY_WEBPLAYER
+				string[] data = PlayerPrefs.GetString("LevelData").Split('\n');
+			#else
+				string[] data = File.ReadAllLines(levelName);
+			#endif	
+
 			foreach( string line in data)
 			{
 				string[] parts = line.Split(' ');

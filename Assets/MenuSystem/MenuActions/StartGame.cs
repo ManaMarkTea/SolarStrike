@@ -10,11 +10,12 @@ public class StartGame : MenuAction {
 
 	public override void SelectAction (MenuItem item)
 	{
-		StreamWriter sw = new StreamWriter("Level.txt");
-		sw.Write(defaultLevel.text);
-		sw.Close();
+		#if UNITY_WEBPLAYER
+		PlayerPrefs.SetString("LevelData", defaultLevel.text);
+		#else
+		File.WriteAllText(defaultLevel.text);
+		#endif
 
-		
 		Application.LoadLevel(Level);
 	}
 

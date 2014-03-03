@@ -19,16 +19,20 @@ public class LoadGame : MenuAction {
 		filename = UnityEditor.EditorUtility.OpenFilePanel("Level to load", Application.dataPath, "txt");
 		Screen.lockCursor = curLock;
 		Screen.showCursor = curShow;
+		GenerateWorld.LevelToLoad = filename;
 		#endif
 
-		if ( System.IO.File.Exists(filename) == false )
+		#if UNITY_WEBPLAYER
+		if ( PlayerPrefs.HasKey("LevelData") == false )
 		{
-			StreamWriter sw = new StreamWriter(filename);
-			sw.Write(defaultLevel.text);
-			sw.Close();
-		} else {
-			GenerateWorld.LevelToLoad = filename;
+			PlayerPrefs.SetString("LevelData", defaultLevel.text);
 		}
+		#else
+		if ( System.IO.File.Exists("Level.txt") == false )
+		{
+			File.WriteAllText(defaultLevel.text);
+		}
+		#endif
 
 		Application.LoadLevel(Level);
 		item.enabled = false;

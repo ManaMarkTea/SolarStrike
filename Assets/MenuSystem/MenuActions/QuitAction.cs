@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class QuitAction : MenuAction {
-	public static string webplayerQuitURL = "http://google.com";
+	public static string webplayerQuitURL = "http://www.GhostTap.com";
 
 	public override void SelectAction (MenuItem item)
-	{
-
-
+	{	
 		#if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 		#elif UNITY_WEBPLAYER

@@ -5,10 +5,13 @@ public class MenuItem : MonoBehaviour {
 
 	public MainMenuScript menu;
 	GUIText text;
-	
+	Color normalColor;
+	public Color NormalColor { get { return normalColor; } }
+
 	// Use this for initialization
 	void Start () {
 		this.text = this.GetComponent<GUIText>();
+		this.normalColor = this.text.color;
 	}
 
 	public void DoActions() 
