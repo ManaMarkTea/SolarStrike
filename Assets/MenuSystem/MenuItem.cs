@@ -7,6 +7,7 @@ public class MenuItem : MonoBehaviour {
 	GUIText text;
 	Color normalColor;
 	public Color NormalColor { get { return normalColor; } }
+	public Color HighlightColor = Color.cyan;
 
 	// Use this for initialization
 	void Start () {

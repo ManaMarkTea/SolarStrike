@@ -47,7 +47,7 @@ public class MainMenuScript : MonoBehaviour {
 			this.MenuItems[i].guiText.color = this.MenuItems[i].NormalColor;
 			if ( selection == i )
 			{
-				this.MenuItems[i].guiText.color = Color.yellow;
+				this.MenuItems[i].guiText.color = this.MenuItems[i].HighlightColor;
 			}
 		}
 

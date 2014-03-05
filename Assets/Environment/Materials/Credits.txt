@@ -1,3 +1,6 @@
 Moonmap.png is provided from NASA's website as public domain:
 
 http://www.nasa.gov/audience/formedia/features/MP_Photo_Guidelines.html#.UxQivfmwKaM
+
+Moon+Normal Map:
+https://github.com/CoryG89/MoonDemo
