@@ -25,7 +25,37 @@ public static class Util
 		output.AddRange(obj.GetComponentsInChildren<Renderer>(true));
 		return output;
 	}
-	
+
+	public static List<T> FindInChildren<T>( this GameObject obj) where T : Component
+	{
+		List<T> output = new List<T>();
+
+		T first = obj.GetComponent<T>();
+		if ( first != null ) output.Add(first);
+
+		Stack<Transform> stack = new Stack<Transform>();
+		stack.Push(obj.transform);
+		
+		while ( stack.Count > 0 ) 
+		{
+			var top = stack.Pop();
+			
+			T item = top.gameObject.GetComponent<T>();
+			if ( item != null ) {
+				output.Add(item);
+			}
+
+			for ( int i = 0; i < top.childCount; i++ )
+			{
+				var child = top.GetChild(i);
+				stack.Push(child);
+			}
+		}
+
+		return output;
+	}
+
+
 	public static BlockObject GetBlock( this GameObject obj )
 	{
 		BlockObject output = obj.GetComponent<BlockObject>();

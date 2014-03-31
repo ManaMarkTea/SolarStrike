@@ -51,7 +51,6 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400010}
-  - 114: {fileID: 11400012}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -182,7 +181,7 @@ Camera:
     m_Bits: 4294965759
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
-  m_HDR: 0
+  m_HDR: 1
   m_OcclusionCulling: 1
 --- !u!20 &2000002
 Camera:
@@ -346,6 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement:
+    sprinting: 0
+    sprintSpeed: 10
     maxForwardSpeed: 10
     maxSidewaysSpeed: 10
     maxBackwardsSpeed: 10
@@ -460,17 +461,6 @@ MonoBehaviour:
   - Turret
   - Chair
   - Shield
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d3ba6619c7133499dc5ea01d9aed1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

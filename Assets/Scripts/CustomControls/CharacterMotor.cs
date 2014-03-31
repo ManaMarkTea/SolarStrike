@@ -29,6 +29,8 @@ public class CharacterMotor : MonoBehaviour
     public class CharacterMotorMovement
     {
         // The maximum horizontal speed when moving
+		public bool sprinting;
+		public float sprintSpeed = 3.0f;
         public float maxForwardSpeed = 3.0f;
         public float maxSidewaysSpeed = 2.0f;
         public float maxBackwardsSpeed = 2.0f;
@@ -411,6 +413,7 @@ public class CharacterMotor : MonoBehaviour
         {
             velocityChangeVector = velocityChangeVector.normalized * maxVelocityChange;
         }
+        
         // ifwe're in the air and don't have control, don't apply any velocity change at all.
         // ifwe're on the ground and don't have control we do apply it - it will correspond to friction.
         if(grounded || canControl)
@@ -437,7 +440,7 @@ public class CharacterMotor : MonoBehaviour
         }
 
         if(inputJump && jumping.lastButtonDownTime < 0 && canControl)
-            jumping.lastButtonDownTime = Time.time;
+              jumping.lastButtonDownTime = Time.time;
 
         if(grounded)
             velocity.y = Mathf.Min(0, velocity.y) - movement.gravity * Time.deltaTime;
@@ -659,7 +662,13 @@ public class CharacterMotor : MonoBehaviour
             return 0;
         else
         {
-            float zAxisEllipseMultiplier = (desiredMovementDirection.z > 0 ? movement.maxForwardSpeed : movement.maxBackwardsSpeed) / movement.maxSidewaysSpeed;
+			var forwardSpeed = movement.maxForwardSpeed;
+			if ( movement.sprinting )
+			{
+				forwardSpeed += movement.sprintSpeed;
+			}
+
+			float zAxisEllipseMultiplier = (desiredMovementDirection.z > 0 ? forwardSpeed : movement.maxBackwardsSpeed) / movement.maxSidewaysSpeed;
             Vector3 temp = new Vector3(desiredMovementDirection.x, 0, desiredMovementDirection.z / zAxisEllipseMultiplier).normalized;
             float length = new Vector3(temp.x, 0, temp.z * zAxisEllipseMultiplier).magnitude * movement.maxSidewaysSpeed;
             return length;

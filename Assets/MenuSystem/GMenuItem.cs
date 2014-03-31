@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuItem : MonoBehaviour {
+public class GMenuItem : MonoBehaviour {
 
 	public MainMenuScript menu;
 	GUIText text;

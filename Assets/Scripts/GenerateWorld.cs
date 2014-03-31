@@ -23,6 +23,8 @@ public class GenerateWorld : MonoBehaviour {
 	public bool EditorMode;
 	public static string LevelToLoad = "Level.txt";
 
+	public event Action<BlockIndex, GameObject> OnWorldChanged;
+
 	public GenerateWorld()
 	{
 
@@ -180,7 +182,31 @@ public class GenerateWorld : MonoBehaviour {
 		euler.y = (float)(Math.Round((float)euler.y / 90.0f) * 90);
 		euler.z = (float)(Math.Round((float)euler.z / 90.0f) * 90);
 	}
-	
+
+	Dictionary<string, GameObject> categoryMap = new Dictionary<string, GameObject>();
+	public Transform findBestParent(string blockId) {
+		Transform parent = this.transform;
+		
+		if ( categoryMap.ContainsKey(blockId) ){
+			parent = categoryMap[blockId].transform;
+		} else {
+			var containerChild = this.transform.FindChild(blockId);
+			GameObject container = null;
+			if ( containerChild != null )
+			{
+				container = containerChild.gameObject;
+			}
+			else {
+				container = new GameObject(blockId);
+			}
+
+			parent = container.transform;
+			container.transform.parent = this.transform;
+			categoryMap[blockId] = container;
+		}
+		return parent;
+	}
+
 	public bool CreateBlockAt( Vector3 pos, string blockId, Vector3 eulerRotation)
 	{
 		Vector3 cellPos = new Vector3(pos.x * 0.5f, pos.y * 0.5f, pos.z * 0.5f);
@@ -198,10 +224,20 @@ public class GenerateWorld : MonoBehaviour {
 			//WorldCubeData[index] = new Block(spawnType, (int)eulerRotation.x, (int)eulerRotation.y, (int)eulerRotation.z);
 			GameObject clone = Instantiate(BlockTypes[blockId], gridPos, Quaternion.Euler(eulerRotation)) as GameObject;
 			clone.name = blockId + " " + index.x + ", " + index.y + "," + index.z;
-			clone.transform.parent = this.transform;
+
+			Transform parent = findBestParent(blockId);
+
+			clone.transform.parent = parent;
 			WorldCubeData[index] = clone;
 			clone.GetBlock().ConfigureSubType();
 			SaveLevel("Level.txt");
+
+			var onChanged = OnWorldChanged;
+			if ( onChanged != null )
+			{
+				onChanged(index, clone);
+			}
+
 			return true;
 		}
 		
@@ -212,10 +248,19 @@ public class GenerateWorld : MonoBehaviour {
 	{
 		Vector3 cellPos = new Vector3(pos.x * 0.5f, pos.y * 0.5f, pos.z * 0.5f);
 		BlockIndex index = WorldCubeData.GetCellIndex( ref cellPos );
-		WorldCubeData[index] = null;
+
+		var onChanged = OnWorldChanged;
+		if ( onChanged != null )
+		{
+			onChanged(index, WorldCubeData[index]);
+        }
+        
+        WorldCubeData[index] = null;
 		SaveLevel("Level.txt");
-	}
-	/// <summary>
+
+
+    }
+    /// <summary>
 	/// Update this instance.
 	/// </summary>
 	// Update is called once per frame
@@ -349,7 +394,11 @@ public class GenerateWorld : MonoBehaviour {
 					{
 						GameObject clone = Instantiate(obj, new Vector3(x*2,y*2,z*2), Quaternion.Euler(rX, rY, rZ)) as GameObject;
 						clone.name = type + " " + x + ", " + y + "," + z;
-						clone.transform.parent = this.transform;					
+
+						var parent = findBestParent(type);
+						clone.transform.parent = parent;
+
+
 						WorldCubeData[index] = clone;
 						clone.GetBlock().SubType = subType;
 					}

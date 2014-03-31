@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CloseInvAction : MenuAction {
@@ -15,7 +15,7 @@ public class CloseInvAction : MenuAction {
 	
 	}
 
-	public override void SelectAction (MenuItem item)
+	public override void SelectAction (GMenuItem item)
 	{
 		InvContainer.visible = !InvContainer.visible;
 		

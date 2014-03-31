@@ -97,16 +97,19 @@ public class WeaponScript : MonoBehaviour {
 			Inventory equipBar = equip.GetComponent<Inventory>();
 			Inventory inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
 
-			int slots = equipBar.slots[0].Slots.Count;
-
-			for ( int i = 0; i < InstancedWeapons.Count; i++) 
+			if (equipBar.slots.Count > 0 ) 
 			{
-				Inventory dest = equipBar;
-				if ( i >= slots ){
-					dest = inv;
+				int slots = equipBar.slots[0].Slots.Count;
+
+				for ( int i = 0; i < InstancedWeapons.Count; i++) 
+				{
+					Inventory dest = equipBar;
+					if ( i >= slots ){
+						dest = inv;
+					}
+
+
 				}
-
-
 			}
 		}
 		

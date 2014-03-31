@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.IO;
 
@@ -7,7 +7,7 @@ public class ResumeGame  : MenuAction {
 	public string Level;
 	public TextAsset defaultLevel;
 
-	public override void SelectAction (MenuItem item)
+	public override void SelectAction (GMenuItem item)
 	{
 	#if UNITY_WEBPLAYER
 		if ( PlayerPrefs.HasKey("LevelData") == false )

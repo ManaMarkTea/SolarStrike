@@ -22,6 +22,12 @@ public class FPSInputController : MonoBehaviour
         // Get the input vector from kayboard or analog stick
         Vector3 directionVector = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+		if ( Input.GetButton("Run") ){
+			motor.movement.sprinting = true;
+		} else {
+			motor.movement.sprinting = false;
+		}
+
 		var inventory = GameObject.FindGameObjectWithTag("Inventory");
 
 		if ( inventory != null )
@@ -53,6 +59,6 @@ public class FPSInputController : MonoBehaviour
 
         // Apply the direction to the CharacterMotor
         motor.inputMoveDirection = transform.rotation * directionVector;
-        motor.inputJump = Input.GetButton("Jump");
+ 		motor.inputJump = Input.GetButton("Jump");
     }
 }

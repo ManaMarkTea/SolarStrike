@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MainMenuScript : MonoBehaviour {
 
-	private MenuItem [] MenuItems;
+	private GMenuItem [] MenuItems;
 	private int selection = -1;
 
 	// Use this for initialization
@@ -12,7 +12,7 @@ public class MainMenuScript : MonoBehaviour {
 		Screen.lockCursor = false;
 		Screen.showCursor = true;
 
-		this.MenuItems = GetComponentsInChildren<MenuItem>();
+		this.MenuItems = GetComponentsInChildren<GMenuItem>();
 		for ( int i = 0; i < this.MenuItems.Length; i++ )
 		{
 			this.MenuItems[i].menu = this;
@@ -54,7 +54,7 @@ public class MainMenuScript : MonoBehaviour {
 
 	}
 
-	public void SelectGui(MenuItem item)
+	public void SelectGui(GMenuItem item)
 	{
 		for ( int i = 0; i < this.MenuItems.Length; i++ )
 		{
